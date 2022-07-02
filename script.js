@@ -102,9 +102,9 @@ const renderPokemonStats = stats => {
     const statElementAmount = document.createElement("div");
     statElementName.textContent = stat.stat.name;
     statElementAmount.textContent = stat.base_stat;
+    statElement.appendChild(statElementName);
+    statElement.appendChild(statElementAmount);
     pokeStats.appendChild(statElement);
-    pokeStats.appendChild(statElementName);
-    pokeStats.appendChild(statElementAmount);
   });
 }
 

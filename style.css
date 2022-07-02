@@ -1,0 +1,8 @@
+.poke-stats div {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 5px;
+    font-size: 23px;
+    color: #FFF;
+}
