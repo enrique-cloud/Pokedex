@@ -3,7 +3,8 @@ const pokeName = document.querySelector('[data-poke-name]');
 const pokeImgContainer = document.querySelector('[data-poke-img-container]');
 const pokeImg = document.querySelector('[data-poke-img]');
 
-const pokeButton = document.querySelector('[data-poke-button]');
+const pokeButtonNormal = document.querySelector('[poke-button-normal]');
+const pokeButtonShiny = document.querySelector('[poke-button-shiny]');
 
 const pokeId = document.querySelector('[data-poke-id]');
 const pokeTypes = document.querySelector('[data-poke-types]');
@@ -40,17 +41,28 @@ async function searchPokemon(event) {
     const data_json = await fetch(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase()}/`);
     const data = await data_json.json();
 
-
-    // const sprite = {"shiny":data.sprites.front_shiny, "normal":data.sprites.front_default};
     const sprite = data.sprites.front_default;
+
+
+    
+    
+    const sprite2 = [data.sprites.front_default, data.sprites.front_shiny];
+
+    pokeButtonNormal.onclick = function() {
+      console.log(sprite2[0]);
+      pokeImg.setAttribute('src', sprite2[0]);
+    }  
+    
+    pokeButtonShiny.onclick = function() {
+      console.log(sprite2[1]);
+      pokeImg.setAttribute('src', sprite2[1]);
+    }
+
+
     
     
     const { stats, types } = data;
     pokeName.textContent = data.name;
-
-
-    // const sprite2 = pokeButton(sprite);
-
 
     pokeImg.setAttribute('src', sprite);
     pokeId.textContent = (`No ${data.id}`);
@@ -65,26 +77,6 @@ async function searchPokemon(event) {
     renderNotFound();
   }
 }
-
-
-
-
-// const button = document.querySelector('button');
-// let ejecutar = false;
-
-// const pokeButton = sprites => {
-//   button.onclick = function() {
-//     ejecutar = true;
-//     alert("Prueba");
-//   }
-  
-//   // const buttonElement = document.createElement("div");
-//   // buttonElement. = stat.stat.name;
-//   // pokeButton.appendChild(typeTextElement);
-  
-// }
-
-
 
 
 const setCardColor = types => {
