@@ -41,30 +41,20 @@ async function searchPokemon(event) {
     const data_json = await fetch(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase()}/`);
     const data = await data_json.json();
 
-    const sprite = data.sprites.front_default;
-
-
-    
-    
-    const sprite2 = [data.sprites.front_default, data.sprites.front_shiny];
+    const sprite = [data.sprites.front_default, data.sprites.front_shiny];
 
     pokeButtonNormal.onclick = function() {
-      console.log(sprite2[0]);
-      pokeImg.setAttribute('src', sprite2[0]);
+      pokeImg.setAttribute('src', sprite[0]);
     }  
     
     pokeButtonShiny.onclick = function() {
-      console.log(sprite2[1]);
-      pokeImg.setAttribute('src', sprite2[1]);
+      pokeImg.setAttribute('src', sprite[1]);
     }
-
-
-    
     
     const { stats, types } = data;
     pokeName.textContent = data.name;
 
-    pokeImg.setAttribute('src', sprite);
+    pokeImg.setAttribute('src', sprite[0]);
     pokeId.textContent = (`No ${data.id}`);
 
     setCardColor(types);
