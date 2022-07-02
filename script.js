@@ -29,7 +29,7 @@ const typeColors = {
     fighting: '#2F2F2F',
     fairy: '#fc82c4',
     dark: '#6d6a6c',
-    default: '#2A1A1F',
+    default: '#ffffff',
 };
 
 
@@ -69,9 +69,17 @@ async function searchPokemon(event) {
 }
 
 
+pokeButtonNormal.onclick = function() {
+  alert("Elige un Pokemon");
+}  
+
+pokeButtonShiny.onclick = function() {
+  alert("Elige un Pokemon");
+}
+
 const setCardColor = types => {
   const colorOne = typeColors[types[0].type.name];
-  const colorTwo = types[1] ? typeColors[types[1].type.name] : typeColors[types[0].type.name];
+  const colorTwo = types[1] ? typeColors[types[1].type.name] : typeColors["default"];
   pokeImg.style.background = `radial-gradient(${colorTwo} 33%, ${colorOne} 33%)`;
   pokeImg.style.backgroundSize = '5px 5px';
 }
