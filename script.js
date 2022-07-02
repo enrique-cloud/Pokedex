@@ -52,7 +52,7 @@ async function searchPokemon(event) {
     }
     
     const { stats, types } = data;
-    pokeName.textContent = data.name;
+    pokeName.textContent = data.name.toUpperCase();
 
     pokeImg.setAttribute('src', sprite[0]);
     pokeId.textContent = (`No ${data.id}`);
