@@ -1,11 +1,7 @@
-const pokeCard = document.querySelector('[data-poke-card]');
 const pokeName = document.querySelector('[data-poke-name]');
-const pokeImgContainer = document.querySelector('[data-poke-img-container]');
 const pokeImg = document.querySelector('[data-poke-img]');
-
 const pokeButtonNormal = document.querySelector('[poke-button-normal]');
 const pokeButtonShiny = document.querySelector('[poke-button-shiny]');
-
 const pokeId = document.querySelector('[data-poke-id]');
 const pokeTypes = document.querySelector('[data-poke-types]');
 const pokeStats = document.querySelector('[data-poke-stats]');
@@ -42,14 +38,6 @@ async function searchPokemon(event) {
     const data = await data_json.json();
 
     const sprite = [data.sprites.front_default, data.sprites.front_shiny];
-
-    pokeButtonNormal.onclick = function() {
-      pokeImg.setAttribute('src', sprite[0]);
-    }  
-    
-    pokeButtonShiny.onclick = function() {
-      pokeImg.setAttribute('src', sprite[1]);
-    }
     
     const { stats, types } = data;
     pokeName.textContent = data.name.toUpperCase();
@@ -58,6 +46,8 @@ async function searchPokemon(event) {
     pokeId.textContent = (`No ${data.id}`);
 
     setCardColor(types);
+    renderButtonNormal(sprite);
+    renderButtonShiny(sprite);
     renderPokemonTypes(types);
     renderPokemonStats(stats);
     
@@ -69,12 +59,28 @@ async function searchPokemon(event) {
 }
 
 
-pokeButtonNormal.onclick = function() {
-  alert("Elige un Pokemon");
-}  
+const renderButtonNormal = sprite => {
+  pokeButtonNormal.innerHTML = '';
+  
+  const buttonElement = document.createElement("button");
+  buttonElement.innerHTML = "Normal";
+  buttonElement.className = "container btn btn-success my-2";
+  buttonElement.addEventListener("click", function () {
+    pokeImg.setAttribute('src', sprite[0]);
+  });
+  pokeButtonNormal.appendChild(buttonElement);
+}
 
-pokeButtonShiny.onclick = function() {
-  alert("Elige un Pokemon");
+const renderButtonShiny = sprite => {
+  pokeButtonShiny.innerHTML = '';
+  
+  const buttonElement = document.createElement("button");
+  buttonElement.innerHTML = "Shiny";
+  buttonElement.className = "container btn btn-success my-2";
+  buttonElement.addEventListener("click", function () {
+    pokeImg.setAttribute('src', sprite[1]);
+  });
+  pokeButtonShiny.appendChild(buttonElement);
 }
 
 const setCardColor = types => {
@@ -112,6 +118,8 @@ const renderNotFound = () => {
     pokeName.textContent = 'No encontrado';
     pokeImg.setAttribute('src', 'poke-shadow.png');
     pokeImg.style.background =  '#fff';
+    pokeButtonNormal.innerHTML = 'Type a valid';
+    pokeButtonShiny.innerHTML = 'Pokemon';
     pokeTypes.innerHTML = '';
     pokeStats.innerHTML = '';
     pokeId.textContent = '';
