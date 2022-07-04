@@ -14,20 +14,21 @@
   <link href="style.css" rel="stylesheet" />
 </head>
   
-<body class="bg-image" style="background-image: url('2.jpg'); background-repeat: no-repeat;">
-  <div class="container p-7 text-light">
+<!-- <body class="bg-image" style="background-image: url('2.jpg'); background-repeat: no-repeat;"> -->
+<body>
+  <div class="container text-light">
 
     <form class="col-md-4 offset-md-4" action="" onsubmit="searchPokemon(event)">
       <input type="text"
         name="pokemon"
         autocomplete="off"
-        class="form-control bg-dark text-light rounded-10 border-0 my-5 text-center"
+        class="form-control bg-dark text-light rounded-10 border-0 my-4 text-center"
         placeholder="Search a Pokemon"
       />
     </form>
 
   
-    <div data-poke-card class="container p-1 card card-body bg-dark text-center col-md-4 offset-md-4 my-5">
+    <div data-poke-card class="container p-0 card card-body bg-dark text-center col-md-4 offset-md-4 my-4">
       
       <div data-poke-name class="text-center pt-1 pb-1 h1">
         Pokedex
@@ -37,18 +38,18 @@
         <img data-poke-img style="width:15rem" class="rounded-circle" src="./poke-shadow.png"/>
       </div>
 
-      <div class="card card-body bg-dark">
-        <div poke-button-normal>Gotta catch 'em</div>
-        <div poke-button-shiny>All!</div>
+      <div class="card card-body bg-dark my-3">
+        <div poke-button-normal class="h1">Gotta catch 'em</div>
+        <div poke-button-shiny class="h1">All!</div>
       </div>
 
-      <div class="card card-body bg-dark">
+      <div class="card card-body bg-dark my-2">
         <div data-poke-id class="text-muted h4"></div>
         <div data-poke-types class="text-uppercase h2"></div>
       </div>
 
-      <div data-poke-card class="card card-body bg-dark">
-        <div data-poke-stats class="poke-stats"></div>
+      <div data-poke-card class="card card-body bg-dark my-3">
+        <div data-poke-stats class="poke-stats h2">by Kike</div>
       </div>
           
     </div>
