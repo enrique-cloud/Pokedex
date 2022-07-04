@@ -37,7 +37,7 @@ async function searchPokemon(event) {
     const data_json = await fetch(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase()}/`);
     const data = await data_json.json();
 
-    const sprite = [data.sprites.front_default, data.sprites.front_shiny];
+    const sprite = [data.sprites.other.home.front_default, data.sprites.other.home.front_shiny];
     
     const { stats, types } = data;
     pokeName.textContent = data.name.toUpperCase();
@@ -64,7 +64,7 @@ const renderButtonNormal = sprite => {
   
   const buttonElement = document.createElement("button");
   buttonElement.innerHTML = "Normal";
-  buttonElement.className = "container btn btn-success my-2";
+  buttonElement.className = "container btn btn-success";
   buttonElement.addEventListener("click", function () {
     pokeImg.setAttribute('src', sprite[0]);
   });
@@ -76,7 +76,7 @@ const renderButtonShiny = sprite => {
   
   const buttonElement = document.createElement("button");
   buttonElement.innerHTML = "Shiny";
-  buttonElement.className = "container btn btn-success my-2";
+  buttonElement.className = "container btn btn-success";
   buttonElement.addEventListener("click", function () {
     pokeImg.setAttribute('src', sprite[1]);
   });
